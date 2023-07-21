@@ -1,0 +1,36 @@
+<div class="container vh-100">
+    <div class="row justify-content-center h-100">
+        <div class="card my-auto shadow">
+            <div class="card-body px-5">
+                <div class="text-center">
+                    <fa-icon [icon]="faLock" class="fa-3x"></fa-icon>
+                </div>
+                <div class="text-center">
+                    <h2>Welcome</h2>
+                </div>
+                <p style="color: lightslategray; text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please enter your login
+                    details&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                <form [formGroup]="loginForm" (submit)="submitLoginForm()">
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="admin@admin.com" class="form-control" name="email"
+                            formControlName="email" />
+                        <span class="text-danger" *ngIf="!gf.email.valid && gf.email.touched">**Please enter valid
+                            email</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="password" placeholder="1234" class="form-control" name="password"
+                            formControlName="password" />
+                        <span class="text-danger" *ngIf="!gf.password.valid && gf.password.touched">
+                            <span *ngIf="gf.password.errors.required">**Please enter password</span>
+                        </span>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100"[disabled]="loginForm.invalid" >Login</button>
+                </form>
+            </div>
+            <div class="card-footer text-right">
+                <small><a routerLink="/forgot-password">Forgot Password</a></small>
+            </div>
+        </div>
+    </div>
+</div>
